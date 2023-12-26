@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    stages {
+        stage("checkout") {
+            steps {
+                git "https://github.com/Akshay200k/cicdakshat.git"
+            }
+        }
+
+        stage("codecompile") {
+            steps {
+                echo "converting human readable to binary"
+                sh "mvn compile"
+            }
+        }
+        stage ('parallelsatge') {
+            parallel{
+        
+        stage("testing"){
+            steps{
+                echo "test cases getting executed"
+                sh "mvn test"
+            }
+        }
+        stage("quality-assurance"){
+            steps{
+                sh "mvn pmd:pmd"
+                recordIssues(tools: [pmdParser()])
+            }
+        }
+            }
+        }
+        stage("package"){
+          steps{
+              sh "mvn package"
+          }  
+        }
+    }
+}
+
