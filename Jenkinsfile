@@ -14,6 +14,9 @@ pipeline {
                 }
             }
         }
+          stage('sq report') {
+              sh "mvn sonar:sonar"
+          }
           stage('Docker login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
