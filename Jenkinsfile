@@ -15,7 +15,9 @@ pipeline {
             }
         }
           stage('sq report') {
+              steps{
               sh "mvn sonar:sonar"
+          }
           }
           stage('Docker login') {
             steps {
