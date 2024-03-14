@@ -38,7 +38,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t akshayk170/cicd:v1 .'
+                    sh 'docker build -t akshayk170/cicd:v7 .'
                 }
             }
         }
@@ -47,7 +47,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh 'docker push akshayk170/cicd:v1'
+                    sh 'docker push akshayk170/cicd:v7'
                 }
             }
         }
