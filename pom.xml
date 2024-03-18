@@ -14,8 +14,6 @@
 	<name>devops-integration</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<sonar.host.url>http://13.233.116.13:9000/</sonar.host.url>
-		<sonar.login>squ_b6d3eb6f0ee577910eb61dfd5bc81b6265a27c1f</sonar.login>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
